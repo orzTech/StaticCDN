@@ -36,7 +36,17 @@
 		   '#92A8CD', 
 		   '#A47D7C', 
 		   '#B5CA92'
-		]
+		];
+		
+		Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+		    return {
+		        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+		        stops: [
+		            [0, color],
+		            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+		        ]
+		    };
+		});
     	
 		var colors = Highcharts.getOptions().colors,
 		    categories = ["文科", "理科","其他"],
